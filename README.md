@@ -1,8 +1,6 @@
-# grunt-kahvesi
+![grunt-kahvesi](http://cl.ly/image/1g2U2c2f1u10/kahvesi.jpg)
 
-> grunt plugin for generating istanbul + mocha coverage reports
-
-**kahvesi** - Turkish coffee
+`grunt-kahvesi` is an extremely simple grunt plugin for generating [istanbul](https://github.com/gotwarlost/istanbul) + [mocha](http://visionmedia.github.io/mocha/) coverage reports. You simply write your mocha tests as you normally would and `grunt-kahvesi` will run them through the `istanbul cover` command in order to generate your code coverage report.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -19,68 +17,15 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-kahvesi');
 ```
 
-## The "kahvesi" task
+### Usage Example
 
-### Overview
-In your project's Gruntfile, add a section named `kahvesi` to the data object passed into `grunt.initConfig()`.
-
-```js
-grunt.initConfig({
-  kahvesi: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
-});
-```
-
-### Options
-
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+Let's generate an istanbul coverage report based on the all the mocha tests using standard globbing. If all goes according to plan, you should end up with an html coverage report, accessible at `coverage/index.html`.
 
 ```js
 grunt.initConfig({
   kahvesi: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  kahvesi: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+    src: [ 'test/**/*_test.js' ]
+  }
 });
 ```
 
@@ -88,4 +33,7 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+version | details
+--------|--------
+v0.1.0  | initial release
