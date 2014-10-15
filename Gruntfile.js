@@ -41,6 +41,9 @@ module.exports = function(grunt) {
     kahvesi: {
       single_test: {
         src: ['test/mocha/test/test1_test.js']
+      },
+      multiple_test: {
+        src: ['test/mocha/test/**/*_test.js']
       }
     },
 
