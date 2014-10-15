@@ -17,7 +17,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-kahvesi');
 ```
 
-### Usage Example
+## Usage
 
 Let's generate an istanbul coverage report based on the all the mocha tests using standard globbing. If all goes according to plan, you should end up with an html coverage report, accessible at `coverage/index.html`.
 
