@@ -3,14 +3,12 @@
 var grunt = require('grunt');
 
 exports.kahvesi = {
-  setUp: function(done) {
-    // setup here if necessary
-    done();
-  },
-  basic_test: function(test) {
-    test.expect(1);
+  single_test: function(test) {
+    test.expect(4);
     test.ok(grunt.file.exists('coverage'));
-    //test.ok(grunt.file.exists('coverage/index.html'));
+    test.ok(grunt.file.exists('coverage/index.html'));
+    test.ok(grunt.file.exists('coverage/coverage.json'));
+    test.ok(grunt.file.exists('coverage/lib/test1.js.html'));
     test.done();
   }
 };

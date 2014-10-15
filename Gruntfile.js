@@ -12,6 +12,15 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+
+    // set test env
+    env: {
+      test: {
+        KAHVESI_TEST: '1'
+      }
+    },
+
+    // lint the code
     jshint: {
       all: [
         'Gruntfile.js',
@@ -30,8 +39,8 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     kahvesi: {
-      basic_test: {
-        src: ['test/*_mocha.js']
+      single_test: {
+        src: ['test/mocha/test/test1_test.js']
       }
     },
 
@@ -49,10 +58,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-env');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'kahvesi', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'env', 'kahvesi', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

@@ -2,6 +2,8 @@
 
 > grunt plugin for generating istanbul + mocha coverage reports
 
+**kahvesi** - Turkish coffee
+
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 
