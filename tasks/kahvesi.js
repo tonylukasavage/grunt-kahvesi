@@ -18,13 +18,21 @@ module.exports = function(grunt) {
 
 	grunt.registerMultiTask('kahvesi', 'grunt plugin for generating istanbul + mocha coverage reports', function() {
 		var done = this.async(),
+			options = this.options({ report: 'html' }),
 			istanbul = quote(BIN + '/istanbul'),
 			mocha = quote(BIN + '/_mocha'),
 			files = this.filesSrc.reduce(function(p,c) { return (p || '') + ' "' + c + '" '; }),
 			excludes = ['**/node_modules/**', '**/test/mocha/test/**'],
-			args = process.env.KAHVESI_TEST ? '--no-default-excludes -x ' + quote(excludes.join(' ')) : '',
-			cmd = format('%s cover --report html %s %s -- -R min %s', istanbul, args, mocha, files);
+			args = process.env.KAHVESI_TEST ? '--no-default-excludes -x ' + quote(excludes.join(' ')) : '';
 
+		var opts = Object.keys(options).map(function(key) {
+			var opt, value = options[key];
+			opt = key.length === 1 ? '-' + key : '--' + key;
+			value = value === true || value === false ? '' : '"' + value + '"';
+			return opt + ' ' + value;
+		}).join(' ');
+
+		var cmd = format('%s cover %s %s %s -- -R min %s', istanbul, opts, args, mocha, files);
 		grunt.log.debug(cmd);
 		exec(cmd, function(err, stdout, stderr) {
 			if (err) { grunt.fail.fatal(err); }

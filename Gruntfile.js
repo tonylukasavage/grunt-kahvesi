@@ -44,6 +44,14 @@ module.exports = function(grunt) {
 			},
 			multiple_test: {
 				src: ['test/mocha/test/**/*_test.js']
+			},
+			multiple_include_test: {
+				src: ['test/mocha/test/**/*_test.js'],
+				options: {
+					dir: './coverage/multiple_include_test',
+					i: ['**/*'],
+					report: 'lcov'
+				}
 			}
 		},
 

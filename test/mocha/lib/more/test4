@@ -1,0 +1,3 @@
+module.exports = function test4() {
+	return 456;
+};
