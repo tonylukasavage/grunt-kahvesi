@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 			if (/No coverage information was collected/.test(stdout)) {
 				grunt.fail.warn('No coverage information was collected. Report not generated.');
 			} else {
-				grunt.log.ok('test coverage report generated to "./coverage/index.html"');
+				grunt.log.ok('test coverage report generated');
 			}
 			done();
 		});
