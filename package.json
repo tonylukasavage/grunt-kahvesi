@@ -43,7 +43,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "istanbul": "^0.3.2",
+    "istanbul": "tonylukasavage/istanbul#includes",
     "mocha": "^1.21.5"
   }
 }
