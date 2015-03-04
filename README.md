@@ -39,3 +39,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 version | details
 --------|--------
 v0.1.0  | initial release
+v0.2.1  | output lcov files
