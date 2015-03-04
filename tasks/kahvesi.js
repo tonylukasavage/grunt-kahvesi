@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 
 	grunt.registerMultiTask('kahvesi', 'grunt plugin for generating istanbul + mocha coverage reports', function() {
 		var done = this.async(),
-			options = this.options({ report: 'html' }),
+			options = this.options({ report: 'lcov' }),
 			istanbul = quote(BIN + '/istanbul'),
 			mocha = quote(BIN + '/_mocha'),
 			files = this.filesSrc.reduce(function(p,c) { return (p || '') + ' "' + c + '" '; }),
