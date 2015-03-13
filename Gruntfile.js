@@ -50,7 +50,7 @@ module.exports = function(grunt) {
 				options: {
 					dir: './coverage/multiple_include_test',
 					i: ['**/*'],
-					report: 'lcov'
+					report: 'html'
 				}
 			}
 		},
