@@ -23,8 +23,10 @@ module.exports = function(grunt) {
 			mocha = quote(BIN + '/_mocha'),
 			files = this.filesSrc.reduce(function(p,c) { return (p || '') + ' "' + c + '" '; }),
 			excludes = ['**/node_modules/**', '**/test/mocha/test/**'],
-			args = process.env.KAHVESI_TEST ? '--no-default-excludes -x ' + quote(excludes.join(' ')) : '';
+			args = process.env.KAHVESI_TEST ? '--no-default-excludes -x ' + quote(excludes.join(' ')) : '',
+			reporter = options.reporter || 'min';
 
+		delete options.reporter;
 		var opts = Object.keys(options).map(function(key) {
 			var opt, value = options[key];
 			opt = key.length === 1 ? '-' + key : '--' + key;
@@ -32,7 +34,8 @@ module.exports = function(grunt) {
 			return opt + ' ' + value;
 		}).join(' ');
 
-		var cmd = format('%s cover %s %s %s -- -R min %s', istanbul, opts, args, mocha, files);
+		var cmd = format('%s cover %s %s %s -- -R %s %s',
+			istanbul, opts, args, mocha, reporter, files);
 		grunt.log.debug(cmd);
 		exec(cmd, function(err, stdout, stderr) {
 			if (options.verbose && stdout) { grunt.log.write(stdout); }
