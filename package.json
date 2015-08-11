@@ -1,8 +1,8 @@
 {
-  "name": "grunt-kahvesi",
+  "name": "grunt-kahvesi-latest",
   "description": "grunt plugin for generating istanbul + mocha coverage reports",
-  "version": "0.2.4",
-  "homepage": "https://github.com/tonylukasavage/grunt-kahvesi",
+  "version": "0.2.5",
+  "homepage": "https://github.com/dawsontoth/grunt-kahvesi",
   "author": {
     "name": "Tony Lukasavage",
     "email": "anthony.lukasavage@gmail.com",
@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tonylukasavage/grunt-kahvesi"
+    "url": "https://github.com/dawsontoth/grunt-kahvesi"
   },
   "bugs": {
-    "url": "https://github.com/tonylukasavage/grunt-kahvesi/issues"
+    "url": "https://github.com/dawsontoth/grunt-kahvesi/issues"
   },
   "licenses": [
     {
@@ -43,7 +43,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "istanbul": "^0.3.8",
-    "mocha": "^1.21.5"
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5"
   }
 }
