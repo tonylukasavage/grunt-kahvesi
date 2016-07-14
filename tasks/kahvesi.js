@@ -39,7 +39,10 @@ module.exports = function(grunt) {
 		grunt.log.debug(cmd);
 		exec(cmd, { env: env }, function(err, stdout, stderr) {
 			if (options.verbose && stdout) { grunt.log.write(stdout); }
-			if (err) { grunt.fail.fatal(err); }
+			if (err) {
+				grunt.log.error(stdout);
+				grunt.fail.fatal(err);
+			}
 			if (/No coverage information was collected/.test(stdout)) {
 				grunt.fail.warn('No coverage information was collected. Report not generated.');
 			} else {
