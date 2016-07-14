@@ -12,15 +12,11 @@ var exec = require('child_process').exec,
 	format = require('util').format,
 	path = require('path');
 
-var BIN = path.join(__dirname, '..', 'node_modules', '.bin');
-
 module.exports = function(grunt) {
 
 	grunt.registerMultiTask('kahvesi', 'grunt plugin for generating istanbul + mocha coverage reports', function() {
 		var done = this.async(),
 			options = this.options({ report: 'lcov' }),
-			istanbul = quote(BIN + '/istanbul'),
-			mocha = quote(BIN + '/_mocha'),
 			files = this.filesSrc.reduce(function(p,c) { return (p || '') + ' "' + c + '" '; }),
 			excludes = ['**/node_modules/**', '**/test/mocha/test/**'],
 			args = process.env.KAHVESI_TEST ? '--no-default-excludes -x ' + quote(excludes.join(' ')) : '',
@@ -34,10 +30,14 @@ module.exports = function(grunt) {
 			return opt + ' ' + value;
 		}).join(' ');
 
-		var cmd = format('%s cover %s %s %s -- -R %s %s',
-			istanbul, opts, args, mocha, reporter, files);
+		var cmd = format('istanbul cover %s %s _mocha -- -R %s %s', opts, args, reporter, files),
+			dir1 = path.join(__dirname, '..', '.bin'),
+			dir2 = path.join(__dirname, '..', '..', '.bin'),
+			env = process.env;
+		env.PATH = dir1 + path.delimiter + dir2 + path.delimiter + env.PATH;
+
 		grunt.log.debug(cmd);
-		exec(cmd, function(err, stdout, stderr) {
+		exec(cmd, { env: env }, function(err, stdout, stderr) {
 			if (options.verbose && stdout) { grunt.log.write(stdout); }
 			if (err) { grunt.fail.fatal(err); }
 			if (/No coverage information was collected/.test(stdout)) {
