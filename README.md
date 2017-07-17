@@ -2,7 +2,7 @@
 
 [![NPM version](https://badge.fury.io/js/grunt-kahvesi.svg)](http://badge.fury.io/js/grunt-kahvesi) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-`grunt-kahvesi` is an extremely simple grunt plugin for generating [istanbul](https://github.com/gotwarlost/istanbul) + [mocha](http://visionmedia.github.io/mocha/) coverage reports. You simply write your mocha tests as you normally would and `grunt-kahvesi` will run them through the `istanbul cover` command in order to generate your code coverage report.
+`grunt-kahvesi` is an extremely simple grunt plugin for generating [istanbul](https://github.com/gotwarlost/istanbul) + [mocha](http://mochajs.org/) coverage reports. You simply write your mocha tests as you normally would and `grunt-kahvesi` will run them through the `istanbul cover` command in order to generate your code coverage report.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
